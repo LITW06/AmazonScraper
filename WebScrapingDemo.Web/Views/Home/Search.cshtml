@@ -1,0 +1,24 @@
+﻿@model List<WebScrapingDemo.AmazonApi.AmazonItem>
+
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><img style="width: 150px; max-height: 200px;" src="@item.ImageUrl"/></td>
+            <td>
+                <a href="https://amazon.com/@item.Url" target="_blank">@item.Title</a>
+            </td>
+            <td>
+                @if (item.Price.HasValue)
+                {
+                    <span>@item.Price.Value.ToString("C")</span>
+                }
+            </td>
+        </tr>
+    }
+</table>
